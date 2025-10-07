@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Helium AI">
+    <meta name="subject" content="Insurance Submission Dashboard">
+    <meta name="keywords" content="insurance, submission, dashboard, underwriting, data visualization">
+    <meta name="description" content="Professional insurance submission data dashboard with interactive visualization">
+    <title>Insurance Submission Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <i data-lucide="shield-check" class="header-icon"></i>
+                    <h1>Insurance Submission Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="status-indicator">
+                        <i data-lucide="check-circle" class="status-icon"></i>
+                        <span class="status-text">System Active</span>
+                    </div>
+                    <div class="user-info">
+                        <i data-lucide="user" class="user-icon"></i>
+                        <span>Operations Team</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Summary Cards -->
+            <section class="summary-section">
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i data-lucide="file-text"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Files</h3>
+                            <p class="card-value" id="totalFiles">2</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i data-lucide="package"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Package Status</h3>
+                            <p class="card-value status-verified" id="packageStatus">Verified</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>TIV Amount</h3>
+                            <p class="card-value" id="tivAmount">$223,394,489</p>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i data-lucide="calendar"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Effective Date</h3>
+                            <p class="card-value" id="effectiveDate">10/04/2024</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Package Information -->
+            <section class="package-section">
+                <div class="section-header">
+                    <h2>
+                        <i data-lucide="inbox"></i>
+                        Package Information
+                    </h2>
+                    <div class="package-id">ID: <span id="packageId">426</span></div>
+                </div>
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 id="packageName">Submission Email</h3>
+                        <div class="status-badge verified">
+                            <i data-lucide="check-circle"></i>
+                            <span>Verified</span>
+                        </div>
+                    </div>
+                    <div class="package-details">
+                        <div class="detail-item">
+                            <i data-lucide="building"></i>
+                            <span class="detail-label">Insured Name:</span>
+                            <span class="detail-value" id="insuredName">FRUIT AND VEG INTERNATIONAL</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="user-check"></i>
+                            <span class="detail-label">Broker Name:</span>
+                            <span class="detail-value" id="brokerName">Ryan Scrouge</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="mail"></i>
+                            <span class="detail-label">Broker Email:</span>
+                            <span class="detail-value" id="brokerEmail">ryan.Scrouge@brokerage.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i data-lucide="user-cog"></i>
+                            <span class="detail-label">Credited Underwriter:</span>
+                            <span class="detail-value" id="underwriter">William Alphabet</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Fields Table -->
+            <section class="data-section">
+                <div class="section-header">
+                    <h2>
+                        <i data-lucide="database"></i>
+                        Extracted Data Fields
+                    </h2>
+                    <div class="table-controls">
+                        <div class="search-box">
+                            <i data-lucide="search"></i>
+                            <input type="text" id="searchInput" placeholder="Search fields...">
+                        </div>
+                        <div class="filter-controls">
+                            <select id="confidenceFilter">
+                                <option value="">All Confidence Levels</option>
+                                <option value="GREY">High Confidence (Grey)</option>
+                                <option value="AMBER">Medium Confidence (Amber)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Field Name</th>
+                                <th>Extracted Data</th>
+                                <th>Confidence Score</th>
+                                <th>Confidence Flag</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Timeline Section -->
+            <section class="timeline-section">
+                <div class="section-header">
+                    <h2>
+                        <i data-lucide="clock"></i>
+                        Processing Timeline
+                    </h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker completed">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Submission Received from Broker</h4>
+                            <p class="timeline-date">09/25/2024</p>
+                            <p class="timeline-description">Initial submission received from broker</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker completed">
+                            <i data-lucide="inbox"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Received by Operations</h4>
+                            <p class="timeline-date">10/16/2024</p>
+                            <p class="timeline-description">Submission processed by operations team</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker completed">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Data Verification Complete</h4>
+                            <p class="timeline-date">Current</p>
+                            <p class="timeline-description">All data fields extracted and verified</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Insurance Submission System - Created by Helium AI</p>
+                <div class="footer-links">
+                    <span>Last Updated: <span id="lastUpdated"></span></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for Field Details -->
+    <div id="fieldModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Field Details</h3>
+                <button class="modal-close" id="closeModal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
