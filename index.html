@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Helium AI">
-    <meta name="subject" content="Insurance Submission Dashboard">
-    <meta name="keywords" content="insurance, submission, dashboard, underwriting, data visualization">
-    <meta name="description" content="Professional insurance submission data dashboard with interactive visualization">
-    <title>Insurance Submission Dashboard</title>
+    <meta name="subject" content="Insurance Risk Analysis Dashboard">
+    <meta name="keywords" content="insurance, risk analysis, portfolio, underwriting, dashboard">
+    <meta name="description" content="Comprehensive Insurance Risk Analysis Dashboard for Portfolio Assessment">
+    <title>Risk Analysis Dashboard - FRUIT AND VEG INTERNATIONAL</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
@@ -17,214 +19,552 @@
         <header class="dashboard-header">
             <div class="header-content">
                 <div class="header-left">
-                    <i data-lucide="shield-check" class="header-icon"></i>
-                    <h1>Insurance Submission Dashboard</h1>
+                    <div class="logo">
+                        <i data-lucide="shield-alert" class="logo-icon"></i>
+                    </div>
+                    <div class="header-title">
+                        <h1>Risk Analysis Dashboard</h1>
+                        <p class="subtitle">FRUIT AND VEG INTERNATIONAL • Policy #INS-2024-426</p>
+                    </div>
                 </div>
                 <div class="header-right">
-                    <div class="status-indicator">
-                        <i data-lucide="check-circle" class="status-icon"></i>
-                        <span class="status-text">System Active</span>
-                    </div>
-                    <div class="user-info">
-                        <i data-lucide="user" class="user-icon"></i>
-                        <span>Operations Team</span>
+                    <div class="risk-score-display">
+                        <div class="risk-score-circle">
+                            <span class="risk-score-value">9.2</span>
+                            <span class="risk-score-label">/10</span>
+                        </div>
+                        <div class="risk-score-info">
+                            <span class="risk-level critical">CRITICAL RISK</span>
+                            <span class="risk-date">Updated: Jan 15, 2024</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Main Content -->
-        <main class="dashboard-main">
-            <!-- Summary Cards -->
-            <section class="summary-section">
-                <div class="summary-cards">
-                    <div class="summary-card">
-                        <div class="card-icon">
-                            <i data-lucide="file-text"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Total Files</h3>
-                            <p class="card-value" id="totalFiles">2</p>
+        <!-- Risk Overview Section -->
+        <section class="risk-overview-section">
+            <div class="section-header">
+                <h2>
+                    <i data-lucide="activity"></i>
+                    Portfolio Risk Overview
+                </h2>
+                <div class="risk-status-badges">
+                    <span class="status-badge critical">Critical</span>
+                    <span class="status-badge high">High</span>
+                    <span class="status-badge medium">Medium</span>
+                    <span class="status-badge low">Low</span>
+                </div>
+            </div>
+            <div class="risk-overview-grid">
+                <div class="overview-card total-properties">
+                    <div class="card-icon">
+                        <i data-lucide="building"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>32</h3>
+                        <p>Total Properties</p>
+                        <span class="card-trend neutral">Multi-location portfolio</span>
+                    </div>
+                </div>
+                <div class="overview-card states-covered">
+                    <div class="card-icon">
+                        <i data-lucide="map"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>27</h3>
+                        <p>States Covered</p>
+                        <span class="card-trend negative">Regulatory complexity</span>
+                    </div>
+                </div>
+                <div class="overview-card critical-properties">
+                    <div class="card-icon">
+                        <i data-lucide="alert-triangle"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>15</h3>
+                        <p>Critical Properties</p>
+                        <span class="card-trend negative">Pre-1950 construction</span>
+                    </div>
+                </div>
+                <div class="overview-card age-span">
+                    <div class="card-icon">
+                        <i data-lucide="calendar"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>107</h3>
+                        <p>Years Span</p>
+                        <span class="card-trend negative">1917-2024</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Indicators Section -->
+        <section class="risk-indicators-section">
+            <div class="section-header">
+                <h2>
+                    <i data-lucide="trending-up"></i>
+                    Risk Indicators & Analysis
+                </h2>
+            </div>
+            <div class="risk-indicators-grid">
+                <div class="indicator-card age-risk">
+                    <div class="indicator-header">
+                        <h3>Age Risk Factor</h3>
+                        <div class="indicator-score critical">9.8/10</div>
+                    </div>
+                    <div class="indicator-content">
+                        <div class="age-distribution">
+                            <div class="age-group critical">
+                                <span class="age-label">Pre-1950</span>
+                                <div class="age-bar">
+                                    <div class="age-fill" style="width: 47%"></div>
+                                </div>
+                                <span class="age-count">15 properties</span>
+                            </div>
+                            <div class="age-group high">
+                                <span class="age-label">1950-1980</span>
+                                <div class="age-bar">
+                                    <div class="age-fill" style="width: 31%"></div>
+                                </div>
+                                <span class="age-count">10 properties</span>
+                            </div>
+                            <div class="age-group medium">
+                                <span class="age-label">1980-2000</span>
+                                <div class="age-bar">
+                                    <div class="age-fill" style="width: 16%"></div>
+                                </div>
+                                <span class="age-count">5 properties</span>
+                            </div>
+                            <div class="age-group low">
+                                <span class="age-label">Post-2000</span>
+                                <div class="age-bar">
+                                    <div class="age-fill" style="width: 6%"></div>
+                                </div>
+                                <span class="age-count">2 properties</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="summary-card">
-                        <div class="card-icon">
-                            <i data-lucide="package"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Package Status</h3>
-                            <p class="card-value status-verified" id="packageStatus">Verified</p>
+                </div>
+                <div class="indicator-card geographic-risk">
+                    <div class="indicator-header">
+                        <h3>Geographic Risk Factor</h3>
+                        <div class="indicator-score high">8.5/10</div>
+                    </div>
+                    <div class="indicator-content">
+                        <div class="geographic-distribution">
+                            <div class="geo-item high-risk">
+                                <i data-lucide="map-pin"></i>
+                                <div class="geo-info">
+                                    <span class="geo-state">Alaska</span>
+                                    <span class="geo-risk">Seismic Risk</span>
+                                </div>
+                                <span class="geo-count">1</span>
+                            </div>
+                            <div class="geo-item high-risk">
+                                <i data-lucide="map-pin"></i>
+                                <div class="geo-info">
+                                    <span class="geo-state">California</span>
+                                    <span class="geo-risk">Seismic Risk</span>
+                                </div>
+                                <span class="geo-count">1</span>
+                            </div>
+                            <div class="geo-item medium-risk">
+                                <i data-lucide="map-pin"></i>
+                                <div class="geo-info">
+                                    <span class="geo-state">Florida</span>
+                                    <span class="geo-risk">Hurricane Risk</span>
+                                </div>
+                                <span class="geo-count">2</span>
+                            </div>
+                            <div class="geo-item medium-risk">
+                                <i data-lucide="map-pin"></i>
+                                <div class="geo-info">
+                                    <span class="geo-state">25+ States</span>
+                                    <span class="geo-risk">Regulatory Complexity</span>
+                                </div>
+                                <span class="geo-count">27</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="summary-card">
-                        <div class="card-icon">
+                </div>
+                <div class="indicator-card construction-risk">
+                    <div class="indicator-header">
+                        <h3>Construction Risk Factor</h3>
+                        <div class="indicator-score medium">7.2/10</div>
+                    </div>
+                    <div class="indicator-content">
+                        <div class="construction-chart">
+                            <canvas id="constructionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="indicator-card occupancy-risk">
+                    <div class="indicator-header">
+                        <h3>Occupancy Risk Factor</h3>
+                        <div class="indicator-score medium">6.8/10</div>
+                    </div>
+                    <div class="indicator-content">
+                        <div class="occupancy-distribution">
+                            <div class="occ-item">
+                                <div class="occ-icon warehouse">
+                                    <i data-lucide="warehouse"></i>
+                                </div>
+                                <div class="occ-info">
+                                    <span class="occ-type">Warehouse</span>
+                                    <span class="occ-count">27 properties</span>
+                                </div>
+                                <div class="occ-risk medium">Medium</div>
+                            </div>
+                            <div class="occ-item">
+                                <div class="occ-icon office">
+                                    <i data-lucide="building"></i>
+                                </div>
+                                <div class="occ-info">
+                                    <span class="occ-type">Office</span>
+                                    <span class="occ-count">3 properties</span>
+                                </div>
+                                <div class="occ-risk low">Low</div>
+                            </div>
+                            <div class="occ-item">
+                                <div class="occ-icon manufacturing">
+                                    <i data-lucide="factory"></i>
+                                </div>
+                                <div class="occ-info">
+                                    <span class="occ-type">Manufacturing</span>
+                                    <span class="occ-count">1 property</span>
+                                </div>
+                                <div class="occ-risk high">High</div>
+                            </div>
+                            <div class="occ-item">
+                                <div class="occ-icon maintenance">
+                                    <i data-lucide="wrench"></i>
+                                </div>
+                                <div class="occ-info">
+                                    <span class="occ-type">Vehicle Maint</span>
+                                    <span class="occ-count">1 property</span>
+                                </div>
+                                <div class="occ-risk high">High</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Critical Properties Section -->
+        <section class="critical-properties-section">
+            <div class="section-header">
+                <h2>
+                    <i data-lucide="alert-octagon"></i>
+                    Critical Properties Requiring Immediate Attention
+                </h2>
+                <div class="section-actions">
+                    <button class="btn btn-primary">
+                        <i data-lucide="download"></i>
+                        Export Report
+                    </button>
+                </div>
+            </div>
+            <div class="critical-properties-grid">
+                <div class="critical-property-card">
+                    <div class="property-header">
+                        <div class="property-location">
+                            <h3>Washington Property</h3>
+                            <p>300 Hogarth Lane, City C, WA</p>
+                        </div>
+                        <div class="property-risk-score critical">9.8/10</div>
+                    </div>
+                    <div class="property-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Year Built:</span>
+                            <span class="detail-value critical">1917 (107 years old)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Construction:</span>
+                            <span class="detail-value">Light Non-Combustible</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Occupancy:</span>
+                            <span class="detail-value">Office</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Risk Factors:</span>
+                            <div class="risk-tags">
+                                <span class="risk-tag critical">Structural Age</span>
+                                <span class="risk-tag high">Seismic Risk</span>
+                                <span class="risk-tag medium">Code Compliance</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-actions">
+                        <button class="action-btn urgent">
+                            <i data-lucide="alert-circle"></i>
+                            Structural Assessment Required
+                        </button>
+                    </div>
+                </div>
+                <div class="critical-property-card">
+                    <div class="property-header">
+                        <div class="property-location">
+                            <h3>Oklahoma Property</h3>
+                            <p>100 Giant Street, Oklahoma City, OK</p>
+                        </div>
+                        <div class="property-risk-score critical">9.1/10</div>
+                    </div>
+                    <div class="property-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Year Built:</span>
+                            <span class="detail-value critical">1930 (94 years old)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Construction:</span>
+                            <span class="detail-value">Joisted Masonry</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">TIV:</span>
+                            <span class="detail-value critical">$59,100 (Underinsured)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Risk Factors:</span>
+                            <div class="risk-tags">
+                                <span class="risk-tag critical">Severe Underinsurance</span>
+                                <span class="risk-tag critical">Structural Age</span>
+                                <span class="risk-tag high">Tornado Risk</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-actions">
+                        <button class="action-btn urgent">
                             <i data-lucide="dollar-sign"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>TIV Amount</h3>
-                            <p class="card-value" id="tivAmount">$223,394,489</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="card-icon">
-                            <i data-lucide="calendar"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Effective Date</h3>
-                            <p class="card-value" id="effectiveDate">10/04/2024</p>
-                        </div>
+                            Valuation Update Required
+                        </button>
                     </div>
                 </div>
-            </section>
+                <div class="critical-property-card">
+                    <div class="property-header">
+                        <div class="property-location">
+                            <h3>DC Property</h3>
+                            <p>400 Henman Street, City C, DC</p>
+                        </div>
+                        <div class="property-risk-score critical">9.3/10</div>
+                    </div>
+                    <div class="property-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Year Built:</span>
+                            <span class="detail-value critical">1926 (98 years old)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Construction:</span>
+                            <span class="detail-value">Light Non-Combustible</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Occupancy:</span>
+                            <span class="detail-value">Warehouse</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Risk Factors:</span>
+                            <div class="risk-tags">
+                                <span class="risk-tag critical">Structural Age</span>
+                                <span class="risk-tag high">Regulatory Compliance</span>
+                                <span class="risk-tag medium">Urban Risk</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-actions">
+                        <button class="action-btn urgent">
+                            <i data-lucide="file-check"></i>
+                            Compliance Review Required
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <!-- Package Information -->
-            <section class="package-section">
-                <div class="section-header">
-                    <h2>
-                        <i data-lucide="inbox"></i>
-                        Package Information
-                    </h2>
-                    <div class="package-id">ID: <span id="packageId">426</span></div>
-                </div>
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 id="packageName">Submission Email</h3>
-                        <div class="status-badge verified">
-                            <i data-lucide="check-circle"></i>
-                            <span>Verified</span>
-                        </div>
-                    </div>
-                    <div class="package-details">
-                        <div class="detail-item">
-                            <i data-lucide="building"></i>
-                            <span class="detail-label">Insured Name:</span>
-                            <span class="detail-value" id="insuredName">FRUIT AND VEG INTERNATIONAL</span>
-                        </div>
-                        <div class="detail-item">
-                            <i data-lucide="user-check"></i>
-                            <span class="detail-label">Broker Name:</span>
-                            <span class="detail-value" id="brokerName">Ryan Scrouge</span>
-                        </div>
-                        <div class="detail-item">
-                            <i data-lucide="mail"></i>
-                            <span class="detail-label">Broker Email:</span>
-                            <span class="detail-value" id="brokerEmail">ryan.Scrouge@brokerage.com</span>
-                        </div>
-                        <div class="detail-item">
-                            <i data-lucide="user-cog"></i>
-                            <span class="detail-label">Credited Underwriter:</span>
-                            <span class="detail-value" id="underwriter">William Alphabet</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Data Fields Table -->
-            <section class="data-section">
-                <div class="section-header">
-                    <h2>
-                        <i data-lucide="database"></i>
-                        Extracted Data Fields
-                    </h2>
-                    <div class="table-controls">
-                        <div class="search-box">
-                            <i data-lucide="search"></i>
-                            <input type="text" id="searchInput" placeholder="Search fields...">
-                        </div>
-                        <div class="filter-controls">
-                            <select id="confidenceFilter">
-                                <option value="">All Confidence Levels</option>
-                                <option value="GREY">High Confidence (Grey)</option>
-                                <option value="AMBER">Medium Confidence (Amber)</option>
+        <!-- Risk Analysis Charts Section -->
+        <section class="risk-analysis-section">
+            <div class="section-header">
+                <h2>
+                    <i data-lucide="bar-chart-3"></i>
+                    Comprehensive Risk Analysis
+                </h2>
+            </div>
+            <div class="analysis-grid">
+                <div class="analysis-card portfolio-distribution">
+                    <div class="analysis-header">
+                        <h3>Portfolio Distribution by State</h3>
+                        <div class="analysis-controls">
+                            <select class="analysis-filter">
+                                <option value="all">All Properties</option>
+                                <option value="critical">Critical Risk Only (9.0+)</option>
+                                <option value="high">High Risk Only (7.0-8.9)</option>
+                                <option value="medium">Medium Risk Only (5.0-6.9)</option>
+                                <option value="low">Low Risk Only (Below 5.0)</option>
                             </select>
                         </div>
                     </div>
+                    <div class="analysis-content">
+                        <canvas id="portfolioChart"></canvas>
+                    </div>
                 </div>
-                <div class="table-container">
-                    <table class="data-table" id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>Field Name</th>
-                                <th>Extracted Data</th>
-                                <th>Confidence Score</th>
-                                <th>Confidence Flag</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            <!-- Data will be populated by JavaScript -->
-                        </tbody>
-                    </table>
+                <div class="analysis-card risk-trends">
+                    <div class="analysis-header">
+                        <h3>Risk Trend Analysis</h3>
+                        <div class="trend-indicator negative">
+                            <i data-lucide="trending-up"></i>
+                            <span>Risk Increasing</span>
+                        </div>
+                    </div>
+                    <div class="analysis-content">
+                        <canvas id="riskTrendChart"></canvas>
+                    </div>
                 </div>
-            </section>
+                <div class="analysis-card risk-matrix">
+                    <div class="analysis-header">
+                        <h3>Risk Impact Matrix</h3>
+                    </div>
+                    <div class="analysis-content">
+                        <div class="risk-matrix-grid">
+                            <div class="matrix-cell high-impact high-probability">
+                                <span class="matrix-label">High Impact<br>High Probability</span>
+                                <span class="matrix-count">8</span>
+                            </div>
+                            <div class="matrix-cell high-impact low-probability">
+                                <span class="matrix-label">High Impact<br>Low Probability</span>
+                                <span class="matrix-count">3</span>
+                            </div>
+                            <div class="matrix-cell low-impact high-probability">
+                                <span class="matrix-label">Low Impact<br>High Probability</span>
+                                <span class="matrix-count">12</span>
+                            </div>
+                            <div class="matrix-cell low-impact low-probability">
+                                <span class="matrix-label">Low Impact<br>Low Probability</span>
+                                <span class="matrix-count">9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <!-- Timeline Section -->
-            <section class="timeline-section">
-                <div class="section-header">
-                    <h2>
-                        <i data-lucide="clock"></i>
-                        Processing Timeline
-                    </h2>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker completed">
-                            <i data-lucide="mail"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>Submission Received from Broker</h4>
-                            <p class="timeline-date">09/25/2024</p>
-                            <p class="timeline-description">Initial submission received from broker</p>
-                        </div>
+        <!-- Recommendations Section -->
+        <section class="recommendations-section">
+            <div class="section-header">
+                <h2>
+                    <i data-lucide="lightbulb"></i>
+                    Risk Mitigation Recommendations
+                </h2>
+            </div>
+            <div class="recommendations-grid">
+                <div class="recommendation-card urgent">
+                    <div class="recommendation-header">
+                        <div class="priority-badge urgent">URGENT</div>
+                        <h3>Structural Engineering Reports</h3>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker completed">
-                            <i data-lucide="inbox"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>Received by Operations</h4>
-                            <p class="timeline-date">10/16/2024</p>
-                            <p class="timeline-description">Submission processed by operations team</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker completed">
-                            <i data-lucide="check-circle"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h4>Data Verification Complete</h4>
-                            <p class="timeline-date">Current</p>
-                            <p class="timeline-description">All data fields extracted and verified</p>
+                    <div class="recommendation-content">
+                        <p>Immediate structural assessment required for all 15+ properties built before 1950. Focus on Washington (1917), Oklahoma (1930), and DC (1926) properties.</p>
+                        <div class="recommendation-details">
+                            <div class="detail-item">
+                                <i data-lucide="clock"></i>
+                                <span>Due: 30 days</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="users"></i>
+                                <span>15+ properties</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="dollar-sign"></i>
+                                <span>High Priority</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+                <div class="recommendation-card high">
+                    <div class="recommendation-header">
+                        <div class="priority-badge high">HIGH</div>
+                        <h3>Updated Valuations</h3>
+                    </div>
+                    <div class="recommendation-content">
+                        <p>Complete portfolio valuation assessment for all 32 properties. Critical focus on Oklahoma property with severe underinsurance ($59K TIV).</p>
+                        <div class="recommendation-details">
+                            <div class="detail-item">
+                                <i data-lucide="clock"></i>
+                                <span>Due: 45 days</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="users"></i>
+                                <span>32 properties</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="dollar-sign"></i>
+                                <span>Critical Priority</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-card high">
+                    <div class="recommendation-header">
+                        <div class="priority-badge high">HIGH</div>
+                        <h3>Seismic Risk Assessments</h3>
+                    </div>
+                    <div class="recommendation-content">
+                        <p>Seismic risk evaluations required for Alaska and California properties. Implement seismic insurance coverage and structural reinforcements.</p>
+                        <div class="recommendation-details">
+                            <div class="detail-item">
+                                <i data-lucide="clock"></i>
+                                <span>Due: 30 days</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="users"></i>
+                                <span>2 properties</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="dollar-sign"></i>
+                                <span>High Priority</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-card medium">
+                    <div class="recommendation-header">
+                        <div class="priority-badge medium">MEDIUM</div>
+                        <h3>Operational Continuity Documentation</h3>
+                    </div>
+                    <div class="recommendation-content">
+                        <p>Comprehensive documentation across all 27 states. Establish multi-jurisdictional compliance monitoring and operational continuity plans.</p>
+                        <div class="recommendation-details">
+                            <div class="detail-item">
+                                <i data-lucide="clock"></i>
+                                <span>Due: 60 days</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="users"></i>
+                                <span>27 states</span>
+                            </div>
+                            <div class="detail-item">
+                                <i data-lucide="dollar-sign"></i>
+                                <span>Medium Priority</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="dashboard-footer">
             <div class="footer-content">
-                <p>&copy; 2025 Insurance Submission System - Created by Helium AI</p>
-                <div class="footer-links">
+                <div class="footer-left">
+                    <p>&copy; 2024 Risk Analysis Dashboard - Powered by Helium AI</p>
+                </div>
+                <div class="footer-right">
                     <span>Last Updated: <span id="lastUpdated"></span></span>
+                    <span>•</span>
+                    <span>Report ID: INS-2024-426</span>
                 </div>
             </div>
         </footer>
-    </div>
-
-    <!-- Modal for Field Details -->
-    <div id="fieldModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle">Field Details</h3>
-                <button class="modal-close" id="closeModal">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Modal content will be populated by JavaScript -->
-            </div>
-        </div>
     </div>
 
     <script src="js/script.js"></script>
